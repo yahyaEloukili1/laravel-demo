@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('about');
 // });
 
-Route::view('/', 'home');
-Route::view('/about', 'about');
-Route::get('/posts/{id}/{author?}', function ($id, $author = 'anass') {
-    $posts = [
-        1 => ['title' => '<a>learn laravel 6</a>'],
-        2 => ['title' => 'learn angular 8']
-    ];
-    return view('posts.show', [
-        'data' => $posts[$id],
-        'author' => $author
-    ]);
-});
+Route::get('/', 'HomeController@home')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/posts/{id?}/{author?}', 'HomeController@blog')->name('posts.show');

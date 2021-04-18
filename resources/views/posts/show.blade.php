@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <h1>posts</h1>
-{{$data['title']}}
+{!! $data['title'] !!}
 {{$author}}
 @endsection
 
